@@ -42,43 +42,32 @@
 
     <header class="text-center my-2">
         <h1 class="title-font text-3xl sm:text-4xl text-emerald-600 drop-shadow-md">🐍 ¡A Colorear la Selva! 🌿</h1>
-        <p class="text-slate-600 text-sm sm:text-base font-bold mt-1">Toca un color abajo y luego toca cualquier parte del dibujo</p>
+        <p class="text-slate-600 text-sm sm:text-base font-bold mt-1">Toca un color abajo y luego toca cualquier parte del dibujo en blanco y negro</p>
     </header>
 
     <main class="relative w-full max-w-xl bg-white rounded-3xl shadow-2xl p-4 flex flex-col items-center border-4 border-emerald-300">
-        <!-- SVG Interactive Drawing based on reference image -->
+        <!-- SVG Interactive Drawing strictly in Black and White (Coloring Book style) -->
         <div id="canvas-container" class="w-full relative aspect-[4/5] max-h-[60vh] flex items-center justify-center">
             <svg id="coloring-svg" viewBox="0 0 800 1000" class="w-full h-full drop-shadow-sm cursor-pointer">
-                <defs>
-                    <!-- Soft gradients for natural background areas -->
-                    <linearGradient id="skyGrad" x1="0" y1="0" x2="0" y2="1">
-                        <stop offset="0%" stop-color="#E1F5FE" />
-                        <stop offset="100%" stop-color="#B3E5FC" />
-                    </linearGradient>
-                    <linearGradient id="groundGrad" x1="0" y1="0" x2="0" y2="1">
-                        <stop offset="0%" stop-color="#C8E6C9" />
-                        <stop offset="100%" stop-color="#A5D6A7" />
-                    </linearGradient>
-                </defs>
-
-                <!-- 1. Background Sky -->
-                <path id="bg-sky" class="fillable" fill="#E1F5FE" stroke="#2D3748" stroke-width="6" d="M30 80 C 30 30, 770 30, 770 80 L 770 650 C 770 650, 500 680, 400 660 C 250 630, 30 650, 30 650 Z" />
+                
+                <!-- 1. Background Sky (White by default) -->
+                <path id="bg-sky" class="fillable" fill="#FFFFFF" stroke="#2D3748" stroke-width="6" d="M30 80 C 30 30, 770 30, 770 80 L 770 650 C 770 650, 500 680, 400 660 C 250 630, 30 650, 30 650 Z" />
 
                 <!-- 2. Ground / Hill -->
-                <path id="bg-ground" class="fillable" fill="#C8E6C9" stroke="#2D3748" stroke-width="6" d="M30 650 C 150 600, 350 630, 500 640 C 650 650, 770 650, 770 650 L 770 970 C 770 970, 400 970, 30 970 Z" />
+                <path id="bg-ground" class="fillable" fill="#FFFFFF" stroke="#2D3748" stroke-width="6" d="M30 650 C 150 600, 350 630, 500 640 C 650 650, 770 650, 770 650 L 770 970 C 770 970, 400 970, 30 970 Z" />
 
                 <!-- 3. Sun -->
                 <g id="sun-group">
-                    <circle id="sun-body" class="fillable" cx="180" cy="180" r="70" fill="#FFF9C4" stroke="#2D3748" stroke-width="6" />
+                    <circle id="sun-body" class="fillable" cx="180" cy="180" r="70" fill="#FFFFFF" stroke="#2D3748" stroke-width="6" />
                     <!-- Sun rays -->
-                    <path class="fillable sun-ray" fill="#FFF9C4" stroke="#2D3748" stroke-width="5" d="M180 75 L180 40" />
-                    <path class="fillable sun-ray" fill="#FFF9C4" stroke="#2D3748" stroke-width="5" d="M252 108 L277 83" />
-                    <path class="fillable sun-ray" fill="#FFF9C4" stroke="#2D3748" stroke-width="5" d="M285 180 L320 180" />
-                    <path class="fillable sun-ray" fill="#FFF9C4" stroke="#2D3748" stroke-width="5" d="M252 252 L277 277" />
-                    <path class="fillable sun-ray" fill="#FFF9C4" stroke="#2D3748" stroke-width="5" d="M180 285 L180 320" />
-                    <path class="fillable sun-ray" fill="#FFF9C4" stroke="#2D3748" stroke-width="5" d="M108 252 L83 277" />
-                    <path class="fillable sun-ray" fill="#FFF9C4" stroke="#2D3748" stroke-width="5" d="M75 180 L40 180" />
-                    <path class="fillable sun-ray" fill="#FFF9C4" stroke="#2D3748" stroke-width="5" d="M108 108 L83 83" />
+                    <path class="fillable sun-ray" fill="#FFFFFF" stroke="#2D3748" stroke-width="5" d="M180 75 L180 40" />
+                    <path class="fillable sun-ray" fill="#FFFFFF" stroke="#2D3748" stroke-width="5" d="M252 108 L277 83" />
+                    <path class="fillable sun-ray" fill="#FFFFFF" stroke="#2D3748" stroke-width="5" d="M285 180 L320 180" />
+                    <path class="fillable sun-ray" fill="#FFFFFF" stroke="#2D3748" stroke-width="5" d="M252 252 L277 277" />
+                    <path class="fillable sun-ray" fill="#FFFFFF" stroke="#2D3748" stroke-width="5" d="M180 285 L180 320" />
+                    <path class="fillable sun-ray" fill="#FFFFFF" stroke="#2D3748" stroke-width="5" d="M108 252 L83 277" />
+                    <path class="fillable sun-ray" fill="#FFFFFF" stroke="#2D3748" stroke-width="5" d="M75 180 L40 180" />
+                    <path class="fillable sun-ray" fill="#FFFFFF" stroke="#2D3748" stroke-width="5" d="M108 108 L83 83" />
                 </g>
                 <!-- Sun Face Overlay (Non-fillable lines) -->
                 <circle cx="160" cy="170" r="7" fill="#2D3748" />
@@ -94,48 +83,46 @@
 
                 <!-- 5. Background Flowers & Grass -->
                 <path id="bg-flower-petals" class="fillable" fill="#FFFFFF" stroke="#2D3748" stroke-width="5" d="M730 380 Q 750 360 770 380 Q 790 400 770 420 Q 750 440 730 420 Q 710 400 730 380 Z" />
-                <circle id="bg-flower-center" class="fillable" cx="750" cy="400" r="18" fill="#FFF59D" stroke="#2D3748" stroke-width="5" />
+                <circle id="bg-flower-center" class="fillable" cx="750" cy="400" r="18" fill="#FFFFFF" stroke="#2D3748" stroke-width="5" />
                 <path d="M750 418 L750 510" fill="none" stroke="#2D3748" stroke-width="6" stroke-linecap="round" />
 
                 <!-- Left Grass -->
-                <path id="grass-left-1" class="fillable" fill="#81C784" stroke="#2D3748" stroke-width="5" d="M60 660 Q 60 550 40 460 Q 70 560 100 660 Z" />
-                <path id="grass-left-2" class="fillable" fill="#66BB6A" stroke="#2D3748" stroke-width="5" d="M90 660 Q 110 580 130 520 Q 130 590 145 660 Z" />
+                <path id="grass-left-1" class="fillable" fill="#FFFFFF" stroke="#2D3748" stroke-width="5" d="M60 660 Q 60 550 40 460 Q 70 560 100 660 Z" />
+                <path id="grass-left-2" class="fillable" fill="#FFFFFF" stroke="#2D3748" stroke-width="5" d="M90 660 Q 110 580 130 520 Q 130 590 145 660 Z" />
 
                 <!-- Bottom Left Flower -->
-                <path id="flower-bl-petals" class="fillable" fill="#FFCDD2" stroke="#2D3748" stroke-width="5" d="M120 870 Q 140 840 170 860 Q 200 880 180 910 Q 160 940 130 920 Q 100 900 120 870 Z" />
-                <circle id="flower-bl-center" class="fillable" cx="150" cy="890" r="15" fill="#FFEE58" stroke="#2D3748" stroke-width="5" />
+                <path id="flower-bl-petals" class="fillable" fill="#FFFFFF" stroke="#2D3748" stroke-width="5" d="M120 870 Q 140 840 170 860 Q 200 880 180 910 Q 160 940 130 920 Q 100 900 120 870 Z" />
+                <circle id="flower-bl-center" class="fillable" cx="150" cy="890" r="15" fill="#FFFFFF" stroke="#2D3748" stroke-width="5" />
                 <path d="M150 905 L120 980" fill="none" stroke="#2D3748" stroke-width="6" stroke-linecap="round" />
 
                 <!-- Bottom Right Grass & Flower -->
-                <path id="grass-br-1" class="fillable" fill="#81C784" stroke="#2D3748" stroke-width="5" d="M720 980 Q 750 880 780 800 Q 730 890 690 980 Z" />
-                <path id="grass-br-2" class="fillable" fill="#66BB6A" stroke="#2D3748" stroke-width="5" d="M660 980 Q 690 910 720 860 Q 680 930 635 980 Z" />
+                <path id="grass-br-1" class="fillable" fill="#FFFFFF" stroke="#2D3748" stroke-width="5" d="M720 980 Q 750 880 780 800 Q 730 890 690 980 Z" />
+                <path id="grass-br-2" class="fillable" fill="#FFFFFF" stroke="#2D3748" stroke-width="5" d="M660 980 Q 690 910 720 860 Q 680 930 635 980 Z" />
 
-                <!-- 6. THE CUTE SNAKE (Wrapped body, spots, head) -->
-                <!-- Snake Body Base -->
+                <!-- 6. THE CUTE SNAKE (Wrapped body, spots, head in Black and White) -->
                 <g id="snake-group" class="transition-transform duration-300">
-                    <path id="snake-body" class="fillable" fill="#A5D6A7" stroke="#2D3748" stroke-width="8" stroke-linejoin="round" d="M 380 470 C 320 470, 260 550, 260 650 C 260 760, 360 850, 480 850 C 580 850, 660 790, 680 690 C 700 580, 620 520, 560 520 C 510 520, 480 570, 480 620 C 480 700, 580 730, 610 650 C 630 600, 590 560, 540 560 C 500 560, 470 600, 470 650 C 470 700, 530 710, 560 670 Z" />
+                    <path id="snake-body" class="fillable" fill="#FFFFFF" stroke="#2D3748" stroke-width="8" stroke-linejoin="round" d="M 380 470 C 320 470, 260 550, 260 650 C 260 760, 360 850, 480 850 C 580 850, 660 790, 680 690 C 700 580, 620 520, 560 520 C 510 520, 480 570, 480 620 C 480 700, 580 730, 610 650 C 630 600, 590 560, 540 560 C 500 560, 470 600, 470 650 C 470 700, 530 710, 560 670 Z" />
 
                     <!-- Snake Spots (Pancitas / Manchas) -->
-                    <ellipse id="spot-1" class="fillable" cx="330" cy="720" rx="35" ry="25" fill="#C8E6C9" stroke="#2D3748" stroke-width="6" transform="rotate(-20 330 720)" />
-                    <ellipse id="spot-2" class="fillable" cx="420" cy="810" rx="30" ry="22" fill="#C8E6C9" stroke="#2D3748" stroke-width="6" transform="rotate(10 420 810)" />
-                    <ellipse id="spot-3" class="fillable" cx="540" cy="800" rx="32" ry="22" fill="#C8E6C9" stroke="#2D3748" stroke-width="6" transform="rotate(-15 540 800)" />
-                    <ellipse id="spot-4" class="fillable" cx="640" cy="710" rx="28" ry="20" fill="#C8E6C9" stroke="#2D3748" stroke-width="6" transform="rotate(40 640 710)" />
-                    <ellipse id="spot-5" class="fillable" cx="590" cy="610" rx="25" ry="18" fill="#C8E6C9" stroke="#2D3748" stroke-width="6" transform="rotate(-5 590 610)" />
+                    <ellipse id="spot-1" class="fillable" cx="330" cy="720" rx="35" ry="25" fill="#FFFFFF" stroke="#2D3748" stroke-width="6" transform="rotate(-20 330 720)" />
+                    <ellipse id="spot-2" class="fillable" cx="420" cy="810" rx="30" ry="22" fill="#FFFFFF" stroke="#2D3748" stroke-width="6" transform="rotate(10 420 810)" />
+                    <ellipse id="spot-3" class="fillable" cx="540" cy="800" rx="32" ry="22" fill="#FFFFFF" stroke="#2D3748" stroke-width="6" transform="rotate(-15 540 800)" />
+                    <ellipse id="spot-4" class="fillable" cx="640" cy="710" rx="28" ry="20" fill="#FFFFFF" stroke="#2D3748" stroke-width="6" transform="rotate(40 640 710)" />
+                    <ellipse id="spot-5" class="fillable" cx="590" cy="610" rx="25" ry="18" fill="#FFFFFF" stroke="#2D3748" stroke-width="6" transform="rotate(-5 590 610)" />
 
                     <!-- Belly Stripes / Segments on Neck -->
-                    <path id="stripe-1" class="fillable" fill="#C8E6C9" stroke="#2D3748" stroke-width="6" d="M390 520 Q 425 510 460 535" />
-                    <path id="stripe-2" class="fillable" fill="#C8E6C9" stroke="#2D3748" stroke-width="6" d="M375 580 Q 415 570 455 600" />
-                    <path id="stripe-3" class="fillable" fill="#C8E6C9" stroke="#2D3748" stroke-width="6" d="M350 640 Q 395 625 440 660" />
+                    <path id="stripe-1" class="fillable" fill="#FFFFFF" stroke="#2D3748" stroke-width="6" d="M390 520 Q 425 510 460 535" />
+                    <path id="stripe-2" class="fillable" fill="#FFFFFF" stroke="#2D3748" stroke-width="6" d="M375 580 Q 415 570 455 600" />
+                    <path id="stripe-3" class="fillable" fill="#FFFFFF" stroke="#2D3748" stroke-width="6" d="M350 640 Q 395 625 440 660" />
 
                     <!-- Snake Head -->
-                    <path id="snake-head" class="fillable" fill="#A5D6A7" stroke="#2D3748" stroke-width="8" stroke-linejoin="round" d="M 370 480 C 270 480, 240 330, 340 270 C 420 220, 520 280, 540 370 C 550 440, 470 480, 370 480 Z" />
+                    <path id="snake-head" class="fillable" fill="#FFFFFF" stroke="#2D3748" stroke-width="8" stroke-linejoin="round" d="M 370 480 C 270 480, 240 330, 340 270 C 420 220, 520 280, 540 370 C 550 440, 470 480, 370 480 Z" />
 
                     <!-- Cute Eyes -->
-                    <!-- Left Eye -->
                     <ellipse cx="330" cy="340" rx="32" ry="40" fill="#2D3748" />
                     <ellipse cx="320" cy="325" rx="12" ry="16" fill="#FFFFFF" />
                     <ellipse cx="342" cy="360" rx="6" ry="8" fill="#FFFFFF" />
-                    <!-- Right Eye -->
+                    
                     <ellipse cx="450" cy="340" rx="32" ry="40" fill="#2D3748" />
                     <ellipse cx="440" cy="325" rx="12" ry="16" fill="#FFFFFF" />
                     <ellipse cx="462" cy="360" rx="6" ry="8" fill="#FFFFFF" />
@@ -146,13 +133,12 @@
 
                     <!-- Cute Smile & Tongue -->
                     <path d="M 360 410 Q 390 440 420 410" fill="none" stroke="#2D3748" stroke-width="7" stroke-linecap="round" />
-                    <!-- Tongue -->
-                    <path id="snake-tongue" class="fillable" fill="#FF5252" stroke="#2D3748" stroke-width="5" d="M375 428 Q 390 460 380 485 L 395 470 L 405 485 Q 395 460 400 428 Z" />
+                    <path id="snake-tongue" class="fillable" fill="#FFFFFF" stroke="#2D3748" stroke-width="5" d="M375 428 Q 390 460 380 485 L 395 470 L 405 485 Q 395 460 400 428 Z" />
                 </g>
 
                 <!-- Small Bottom Flower 2 -->
-                <path id="flower-bl2-petals" class="fillable" fill="#FFF9C4" stroke="#2D3748" stroke-width="5" d="M310 920 Q 330 890 360 910 Q 390 930 370 960 Q 350 990 320 970 Q 290 950 310 920 Z" />
-                <circle id="flower-bl2-center" class="fillable" cx="340" cy="940" r="14" fill="#FF8A65" stroke="#2D3748" stroke-width="5" />
+                <path id="flower-bl2-petals" class="fillable" fill="#FFFFFF" stroke="#2D3748" stroke-width="5" d="M310 920 Q 330 890 360 910 Q 390 930 370 960 Q 350 990 320 970 Q 290 950 310 920 Z" />
+                <circle id="flower-bl2-center" class="fillable" cx="340" cy="940" r="14" fill="#FFFFFF" stroke="#2D3748" stroke-width="5" />
                 <path d="M340 954 L335 1000" fill="none" stroke="#2D3748" stroke-width="6" stroke-linecap="round" />
             </svg>
         </div>
@@ -161,10 +147,10 @@
     <footer class="w-full max-w-xl flex flex-col items-center gap-4 mt-4">
         <!-- Palette Bar -->
         <div class="bg-white/90 backdrop-blur-md p-3 rounded-2xl shadow-lg flex flex-wrap justify-center gap-3 border-2 border-emerald-200">
-            <button class="color-btn w-12 h-12 sm:w-14 sm:h-14 rounded-full bg-[#FF5252] shadow-md transition transform hover:scale-110 active:scale-95" data-color="#FF5252" aria-label="Rojo"></button>
+            <button class="color-btn active w-12 h-12 sm:w-14 sm:h-14 rounded-full bg-[#FF5252] shadow-md transition transform hover:scale-110 active:scale-95" data-color="#FF5252" aria-label="Rojo"></button>
             <button class="color-btn w-12 h-12 sm:w-14 sm:h-14 rounded-full bg-[#FFEB3B] shadow-md transition transform hover:scale-110 active:scale-95" data-color="#FFEB3B" aria-label="Amarillo"></button>
             <button class="color-btn w-12 h-12 sm:w-14 sm:h-14 rounded-full bg-[#4CAF50] shadow-md transition transform hover:scale-110 active:scale-95" data-color="#4CAF50" aria-label="Verde"></button>
-            <button class="color-btn active w-12 h-12 sm:w-14 sm:h-14 rounded-full bg-[#2196F3] shadow-md transition transform hover:scale-110 active:scale-95" data-color="#2196F3" aria-label="Azul"></button>
+            <button class="color-btn w-12 h-12 sm:w-14 sm:h-14 rounded-full bg-[#2196F3] shadow-md transition transform hover:scale-110 active:scale-95" data-color="#2196F3" aria-label="Azul"></button>
             <button class="color-btn w-12 h-12 sm:w-14 sm:h-14 rounded-full bg-[#E91E63] shadow-md transition transform hover:scale-110 active:scale-95" data-color="#E91E63" aria-label="Rosa"></button>
             <button class="color-btn w-12 h-12 sm:w-14 sm:h-14 rounded-full bg-[#9C27B0] shadow-md transition transform hover:scale-110 active:scale-95" data-color="#9C27B0" aria-label="Morado"></button>
             <button class="color-btn w-12 h-12 sm:w-14 sm:h-14 rounded-full bg-[#FF9800] shadow-md transition transform hover:scale-110 active:scale-95" data-color="#FF9800" aria-label="Naranja"></button>
@@ -198,7 +184,7 @@
     <canvas id="confetti-canvas" class="fixed inset-0 pointer-events-none z-40 hidden"></canvas>
 
     <script>
-        let currentColor = '#2196F3'; // Default blue color
+        let currentColor = '#FF5252'; // Default red color
         const colorButtons = document.querySelectorAll('.color-btn');
         const fillableElements = document.querySelectorAll('.fillable');
         const snakeGroup = document.getElementById('snake-group');
@@ -216,7 +202,6 @@
                 btn.classList.add('active');
                 currentColor = btn.getAttribute('data-color');
             });
-            // Touch support
             btn.addEventListener('touchend', (e) => {
                 e.preventDefault();
                 colorButtons.forEach(b => b.classList.remove('active'));
@@ -228,7 +213,6 @@
         fillableElements.forEach(el => {
             el.addEventListener('click', () => {
                 el.style.fill = currentColor;
-                // Add soft pop animation on fill
                 el.style.transition = 'fill 0.3s ease';
             });
             el.addEventListener('touchend', (e) => {
@@ -237,39 +221,9 @@
             }, {passive: false});
         });
 
-        const defaultColors = {
-            'bg-sky': '#E1F5FE',
-            'bg-ground': '#C8E6C9',
-            'sun-body': '#FFF9C4',
-            'cloud': '#FFFFFF',
-            'snake-body': '#A5D6A7',
-            'spot-1': '#C8E6C9',
-            'spot-2': '#C8E6C9',
-            'spot-3': '#C8E6C9',
-            'spot-4': '#C8E6C9',
-            'spot-5': '#C8E6C9',
-            'stripe-1': '#C8E6C9',
-            'stripe-2': '#C8E6C9',
-            'stripe-3': '#C8E6C9',
-            'snake-head': '#A5D6A7',
-            'snake-tongue': '#FF5252',
-            'flower-bl-petals': '#FFCDD2',
-            'flower-bl-center': '#FFEE58',
-            'flower-bl2-petals': '#FFF9C4',
-            'flower-bl2-center': '#FF8A65',
-            'bg-flower-petals': '#FFFFFF',
-            'bg-flower-center': '#FFF59D'
-        };
-
         btnReset.addEventListener('click', () => {
             fillableElements.forEach(el => {
-                if(el.id && defaultColors[el.id]) {
-                    el.style.fill = defaultColors[el.id];
-                } else if(el.classList.contains('sun-ray')) {
-                    el.style.fill = '#FFF9C4';
-                } else if(el.classList.contains('fillable') && !el.style.fill) {
-                    // fallback
-                }
+                el.style.fill = '#FFFFFF';
             });
             snakeGroup.classList.remove('dancing');
         });
@@ -328,12 +282,9 @@
         }
 
         btnFinish.addEventListener('click', () => {
-            // Activate snake dancing animation
             snakeGroup.classList.add('dancing');
-            // Show celebration modal
             modal.classList.remove('hidden');
             modal.classList.add('flex');
-            // Start confetti celebration
             startConfetti();
         });
 
